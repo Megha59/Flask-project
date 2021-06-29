@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+<body style="background-color: lightgrey;">
+    <center>
+        <h1>Welcome to Hospital</h1><br><br>
+    <p><h2><a href="{{ url_for('docindex') }}"  style="color: black;text-decoration: none;"><img src="{{url_for('static', filename='doctor.png')}}" height="150px" width="150px"/></a></h2>Doctor details</p>
+    <p><h2><a href="{{ url_for('patindex') }}" style="color: black;text-decoration: none;"><img src="{{url_for('static', filename='patient.png')}}" height="150px" width="150px"/></a></h2>Patient details</p>
+    
+    </center>
+</body>
+</html>

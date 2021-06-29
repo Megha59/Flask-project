@@ -1,0 +1,49 @@
+<html>
+  <body style="background-color: beige;">
+    
+    <center>
+        <h1>Add Patient</h1>
+    <form method="POST" action="/patient">
+        <input type="text" name="pid" placeholder="Enter Patient ID"><br><br>
+        <input type="text" name="pname" placeholder="Enter Patient name"><br><br>
+        <input type="text" name="disease" placeholder="Enter Disease"><br><br>
+      <input type="submit" value="Add" name="add">
+    </form>
+    </center>
+<hr>
+    <h1>Patient List</h1>
+    <table>
+        <tr>
+            <td><h2>ID....... </h2></td>
+            <td><h2>Name............. </h2></td>
+            <td><h2>Disease </h2></td>
+            <hr>
+        </tr>
+      {% for pat in patient %}
+      
+        <tr>
+          <td>{{pat.pid}}</td>
+          <td>{{pat.pname}}</td>
+          <td>{{pat.disease}}</td>
+          <td>
+            <form method="POST" action="./patient/update" style="display: inline">
+              <input type="hidden" value="{{pat.pid}}" name="oldid">
+              <input type="text" value="{{pat.pid}}" name="newid">
+              <input type="hidden" value="{{pat.pname}}" name="oldpname">
+              <input type="text" value="{{pat.pname}}" name="newpname">
+              <input type="hidden" value="{{pat.disease}}" name="olddis">
+              <input type="text" value="{{pat.disease}}" name="newdis">
+              <input type="submit" value="Update">
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="./patient/delete" style="display: inline">
+              <input type="hidden" value="{{pat.pid}}" name="pid">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

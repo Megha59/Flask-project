@@ -1,0 +1,48 @@
+<html>
+  <body style="background-color: rgb(185, 226, 226);">
+    <center>
+        <h1>Add Doctor</h1>
+    <form method="POST" action="/doctor">
+        <input type="text" name="did" placeholder="Enter Doctor ID"><br><br>
+        <input type="text" name="dname" placeholder="Enter Doctor name"><br><br>
+        <input type="text" name="dept" placeholder="Enter department"><br><br>
+      <input type="submit" value="Add" name="add">
+    </form>
+    </center>
+<hr>
+    <h1>Doctors List</h1>
+    <table>
+        <tr>
+            <td><h2>ID....... </h2></td>
+            <td><h2>Name............. </h2></td>
+            <td><h2>Department </h2></td>
+            <hr>
+        </tr>
+      {% for doc in doctor %}
+      
+        <tr>
+          <td>{{doc.did}}</td>
+          <td>{{doc.dname}}</td>
+          <td>{{doc.department}}</td>
+          <td>
+            <form method="POST" action="./doctor/update" style="display: inline">
+              <input type="hidden" value="{{doc.did}}" name="oldid">
+              <input type="text" value="{{doc.did}}" name="newid">
+              <input type="hidden" value="{{doc.dname}}" name="olddname">
+              <input type="text" value="{{doc.dname}}" name="newdname">
+              <input type="hidden" value="{{doc.department}}" name="olddept">
+              <input type="text" value="{{doc.department}}" name="newdept">
+              <input type="submit" value="Update">
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="./doctor/delete" style="display: inline">
+              <input type="hidden" value="{{doc.did}}" name="did">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
